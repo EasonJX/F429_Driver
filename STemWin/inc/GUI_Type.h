@@ -1,16 +1,15 @@
 /*********************************************************************
-*          Portions COPYRIGHT 2016 STMicroelectronics                *
-*          Portions SEGGER Microcontroller GmbH & Co. KG             *
+*                SEGGER Microcontroller GmbH & Co. KG                *
 *        Solutions for real time microcontroller applications        *
 **********************************************************************
 *                                                                    *
-*        (c) 1996 - 2015  SEGGER Microcontroller GmbH & Co. KG       *
+*        (c) 1996 - 2017  SEGGER Microcontroller GmbH & Co. KG       *
 *                                                                    *
 *        Internet: www.segger.com    Support:  support@segger.com    *
 *                                                                    *
 **********************************************************************
 
-** emWin V5.32 - Graphical user interface for embedded applications **
+** emWin V5.40 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -81,7 +80,7 @@ typedef struct {
                          const LCD_LOGPALETTE * pLogPal, 
                          int xMag, 
                          int yMag);
-  GUI_COLOR (* pfIndex2Color)(unsigned Index);
+  GUI_COLOR (* pfIndex2Color)(LCD_PIXELINDEX Index);
   void      (* pfDrawHW)(int x0,
                          int y0,
                          int xsize, 
@@ -323,19 +322,7 @@ DECLARE_FONT(PROP_AA2);
 DECLARE_FONT(PROP_AA2_EXT);
 DECLARE_FONT(PROP_AA4);
 DECLARE_FONT(PROP_AA4_EXT);
-	
-	//∫∫◊÷œ‘ æ“∆÷≤≤ø∑÷
-DECLARE_FONT(USER);
-	
-#define GUI_FONTTYPE_USER \
-		GUIUSER_DispChar, \
-		GUIUSER_GetCharDistX, \
-		GUIMONO_GetFontInfo, \
-		GUIMONO_IsInFont, \
-		(GUI_GETCHARINFO *)0, \
-		(tGUI_ENC_APIList*)0
-		
-		
+
 /* MONO: Monospaced fonts */
 #define GUI_FONTTYPE_MONO       \
   GUIMONO_DispChar,             \

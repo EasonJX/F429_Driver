@@ -1059,11 +1059,6 @@
           <GroupName>STemWin</GroupName>
           <Files>
             <File>
-              <FileName>STemWin532_CM4_OS_Keil_ot.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\STemWin\Lib\STemWin532_CM4_OS_Keil_ot.lib</FilePath>
-            </File>
-            <File>
               <FileName>GUIConf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\STemWin\Config\GUIConf.c</FilePath>
@@ -1077,6 +1072,11 @@
               <FileName>GUI_X_FreeRTOS.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\STemWin\OS\GUI_X_FreeRTOS.c</FilePath>
+            </File>
+            <File>
+              <FileName>STemWin540_CM4_Keil_ot.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\STemWin\Lib\STemWin540_CM4_Keil_ot.lib</FilePath>
             </File>
           </Files>
         </Group>

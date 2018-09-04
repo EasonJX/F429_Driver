@@ -1939,19 +1939,6 @@
     <File>
       <GroupNumber>7</GroupNumber>
       <FileNumber>125</FileNumber>
-      <FileType>4</FileType>
-      <tvExp>0</tvExp>
-      <Focus>1</Focus>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\STemWin\Lib\STemWin532_CM4_OS_Keil_ot.lib</PathWithFileName>
-      <FilenameWithoutPath>STemWin532_CM4_OS_Keil_ot.lib</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>7</GroupNumber>
-      <FileNumber>126</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>1</Focus>
@@ -1964,7 +1951,7 @@
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
-      <FileNumber>127</FileNumber>
+      <FileNumber>126</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>1</Focus>
@@ -1977,7 +1964,7 @@
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
-      <FileNumber>128</FileNumber>
+      <FileNumber>127</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>1</Focus>
@@ -1985,6 +1972,19 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\STemWin\OS\GUI_X_FreeRTOS.c</PathWithFileName>
       <FilenameWithoutPath>GUI_X_FreeRTOS.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>128</FileNumber>
+      <FileType>4</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\STemWin\Lib\STemWin540_CM4_Keil_ot.lib</PathWithFileName>
+      <FilenameWithoutPath>STemWin540_CM4_Keil_ot.lib</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -3103,7 +3103,7 @@
 
   <Group>
     <GroupName>GUI_RGBLink</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
