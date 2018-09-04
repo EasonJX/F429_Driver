@@ -103,7 +103,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	  WM_InvalidateWindow(pMsg->hWin);
 	  break;
   case WM_TIMER:
-	  if (Sec++ > 59)
+	  if (++Sec> 59)
 	  {
 		  Min++;
 		  Sec = 0;
@@ -125,9 +125,9 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 	  
 //  GUI_DrawGradientH(0, 0, 1023, 79, 0x0080ff80, GUI_LIGHTBLUE);
 
-	  GUI_DrawGradientV(0, 0, 479, 15, 0xFFCCCC, GUI_LIGHTBLUE);
+	  GUI_DrawGradientV(0, 0, 479, 15, 0xCCCCFF, GUI_LIGHTBLUE);
 //	  GUI_DrawGradientV(0, 26, 800, 50, GUI_BLUE, 0xFFCCCC);
-	  GUI_DrawGradientV(0, 15, 479, 30, 0xFF7070, 0x00FF2020);
+	  GUI_DrawGradientV(0, 15, 479, 30, 0x7070FF, 0x002020FF);
 //	  if (Sec%10>5)
 //	  GUI_DrawBitmap(&bmlogo, 10, 8);
 //	  else
@@ -208,12 +208,12 @@ WM_HWIN CreateWinMain(void);
 void MainTask(void) {
 	int i, j;
 
-	GUI_RECT Rect = { 180, 220, 280, 240 };
+	GUI_RECT Rect = { 180, 220, 297, 240 };
 	
-	WM_SetCreateFlags(WM_CF_MEMDEV);
+
 	GUI_Init();	
 
-
+	GUI_Clear();
 	Date.Year = 2018;
 	Date.Month = 7;
 	Date.Day = 7;
@@ -236,17 +236,18 @@ void MainTask(void) {
 	GUI_SetFont(&GUI_Font24B_ASCII);
 	GUI_SetTextMode(GUI_TM_TRANS);
 	GUI_DispStringHCenterAt("Build software better, together.", 240, 190);
-	GUI_Delay(200);
+	GUI_Delay(1000);
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 65; j++)
 		{
-		//	GUI_DrawGradientV(0, 0, 479, 271, GUI_LIGHTBLUE, GUI_BLUE);
+//			GUI_DrawGradientV(0, 0, 479, 271, GUI_LIGHTBLUE, GUI_BLUE);
 //			GUI_DispStringHCenterAt("Build software better, together.", 240, 190);
 //			GUI_DrawBitmap(&bmlogo, 120, 100);
-			GUI_FillRect(180, 222, 280, 240);
-	//		GUI_SetColor(GUI_WHITE);
-			GUI_DrawRoundedFrame(180, 220, 280, 240, 10, 2);
+			GUI_SetColor(GUI_BLUE);
+			GUI_FillRect(180, 222, 300, 240);
+			GUI_SetColor(GUI_WHITE);
+			GUI_DrawRoundedFrame(180, 220, 300, 240, 10, 2);
 			GUI_SetClipRect(&Rect);
 			GUI_DrawBitmap(&bmbar, 180 + j * 4, 225);
 			GUI_SetClipRect(NULL);
@@ -255,7 +256,7 @@ void MainTask(void) {
 	}
 	GUI_DrawGradientV(0, 0, 479, 271, GUI_LIGHTBLUE, GUI_BLUE);
 #endif
-
+	WM_SetCreateFlags(WM_CF_MEMDEV);
 	GUI_EnableAlpha(1);
 	WIN_Header = CreateHeaderWindow();
 	CreateWinMain();

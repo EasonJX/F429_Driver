@@ -254,7 +254,7 @@ static void vSD_Task(void *pvParameters)
 	uint8_t res;
 	UINT brw;
 //	BYTE work[4096];
-	
+	Display_Init();
 	vTaskDelay(1000);
 	//SDø®≤‚ ‘
 		printf("SD fatfs test\r\n");
@@ -324,9 +324,11 @@ static void vSD_Task(void *pvParameters)
 	{
 		testsram2[i]=0x7e0|0x7e0<<16;
 	} 	
+	printf("≤‚ ‘ÕÍ±œ\r\n");
 	HAL_Delay(1000);
-	Display_Init();
-	Display_Test();
+	//≤‚ ‘”√°£°£°£
+//	Display_Init();
+//	Display_Test();
 
 	//vTaskDelete(xHandleTaskSD);
 	vTaskDelete(NULL);
@@ -337,8 +339,8 @@ static void vSD_Task(void *pvParameters)
 }
 static void vGUI_Task(void *pvParameters)
 {
-	vTaskDelay(10000);
-	WM_SetCreateFlags(WM_CF_MEMDEV);
+	vTaskDelay(5000);
+//	WM_SetCreateFlags(WM_CF_MEMDEV);
 	 GUI_Init();
 #if VNC
 	GUI_VNC_X_StartServer(0, 0);
