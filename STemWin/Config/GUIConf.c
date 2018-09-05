@@ -71,6 +71,10 @@ Purpose     : Display controller initialization
 *
 **********************************************************************
 */
+  //
+  // 32 bit aligned memory area
+  //
+U32 aMemory[GUI_NUMBYTES / 4] __attribute__((at(GUI_EXTBUFADD)));
 /*********************************************************************
 *
 *       GUI_X_Config
@@ -80,10 +84,7 @@ Purpose     : Display controller initialization
 *   available memory for the GUI.
 */
 void GUI_X_Config(void) {
-  //
-  // 32 bit aligned memory area
-  //
-  static U32 aMemory[GUI_NUMBYTES / 4] __attribute__((at(GUI_EXTBUFADD)));
+
   //
   // Assign memory to emWin
   //
