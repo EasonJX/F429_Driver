@@ -340,7 +340,7 @@ static void vSD_Task(void *pvParameters)
 static void vGUI_Task(void *pvParameters)
 {
 	vTaskDelay(5000);
-//	WM_SetCreateFlags(WM_CF_MEMDEV);
+
 	 GUI_Init();
 #if VNC
 	GUI_VNC_X_StartServer(0, 0);
@@ -348,8 +348,9 @@ static void vGUI_Task(void *pvParameters)
 	GUI_VNC_SetProgName("Designed by GX");
 	GUI_VNC_RingBell();
 #endif	
-	MainTask();
-//	GUIDEMO_Main();
+//	MainTask();
+	WM_SetCreateFlags(WM_CF_MEMDEV);
+	GUIDEMO_Main();
 //	MainTask_ETI();
 //	Font_Demo();
 	vTaskDelay(1000);	
@@ -428,7 +429,7 @@ void AppTaskCreate (void)
 
 	xTaskCreate(vGUI_Task,
 							"GUI_Task",
-							512,
+							2048,
 							NULL,
 							2,
 							&xHandleTaskGUI

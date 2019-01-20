@@ -223,9 +223,9 @@ void HAL_LTDC_LineEvenCallback(LTDC_HandleTypeDef *hltdc)
       /* Calculate address of buffer to be used  as visible frame buffer */
       Addr = layer_prop[layer].address + layer_prop[layer].xSize * layer_prop[layer].ySize * layer_prop[layer].pending_buffer * layer_prop[layer].BytesPerPixel;
 
-			HAL_LTDC_SetAddress(hltdc, Addr, layer);
+		//	HAL_LTDC_SetAddress(hltdc, Addr, layer);
 	  //LTDC_LayerAddress((i == 0 ? LTDC_Layer1 : LTDC_Layer2), Addr);
-
+		__HAL_LTDC_LAYER(hltdc, layer)->CFBAR = Addr;
 	  __HAL_LTDC_RELOAD_IMMEDIATE_CONFIG(hltdc);
 	  
       /* Notify STemWin that buffer is used */
@@ -255,7 +255,7 @@ void LCD_X_Config(void)
 {
   uint32_t i;
   
-  //LCD_LL_Init();
+  LCD_LL_Init();
   
   /* At first initialize use of multiple buffers on demand */
 #if (NUM_BUFFERS > 1)
@@ -312,7 +312,7 @@ void LCD_X_Config(void)
     /* Set custom functions for several operations */
     LCD_SetDevFunc(i, LCD_DEVFUNC_COPYBUFFER, (void(*)(void))CUSTOM_CopyBuffer);
     LCD_SetDevFunc(i, LCD_DEVFUNC_COPYRECT,   (void(*)(void))CUSTOM_CopyRect);
-    
+    LCD_SetDevFunc(i, LCD_DEVFUNC_FILLRECT, (void(*)(void))CUSTOM_FillRect);
     /* Filling via DMA2D does only work with 16bpp or more */
     if (LCD_LL_GetPixelformat(i) <= LTDC_PIXEL_FORMAT_ARGB4444) 
     {
@@ -326,11 +326,11 @@ void LCD_X_Config(void)
     }
     
     /* Set up custom color conversion using DMA2D, works only for direct color modes because of missing LUT for DMA2D destination */
-    GUICC_M1555I_SetCustColorConv(Color2IndexBulk_M1555IDMA2D, Index2ColorBulk_M1555IDMA2D); /* Set up custom bulk color conversion using DMA2D for ARGB1555 */
+//    GUICC_M1555I_SetCustColorConv(Color2IndexBulk_M1555IDMA2D, Index2ColorBulk_M1555IDMA2D); /* Set up custom bulk color conversion using DMA2D for ARGB1555 */
     GUICC_M565_SetCustColorConv  (Color2IndexBulk_M565DMA2D,   Index2ColorBulk_M565DMA2D);   /* Set up custom bulk color conversion using DMA2D for RGB565 */
-    GUICC_M4444I_SetCustColorConv(Color2IndexBulk_M4444IDMA2D, Index2ColorBulk_M4444IDMA2D); /* Set up custom bulk color conversion using DMA2D for ARGB4444 */
-    GUICC_M888_SetCustColorConv  (Color2IndexBulk_M888DMA2D,   Index2ColorBulk_M888DMA2D);   /* Set up custom bulk color conversion using DMA2D for RGB888 */
-    GUICC_M8888I_SetCustColorConv(Color2IndexBulk_M8888IDMA2D, Index2ColorBulk_M8888IDMA2D); /* Set up custom bulk color conversion using DMA2D for ARGB8888 */
+//    GUICC_M4444I_SetCustColorConv(Color2IndexBulk_M4444IDMA2D, Index2ColorBulk_M4444IDMA2D); /* Set up custom bulk color conversion using DMA2D for ARGB4444 */
+//    GUICC_M888_SetCustColorConv  (Color2IndexBulk_M888DMA2D,   Index2ColorBulk_M888DMA2D);   /* Set up custom bulk color conversion using DMA2D for RGB888 */
+//    GUICC_M8888I_SetCustColorConv(Color2IndexBulk_M8888IDMA2D, Index2ColorBulk_M8888IDMA2D); /* Set up custom bulk color conversion using DMA2D for ARGB8888 */
     
     /* Set up custom alpha blending function using DMA2D */
     GUI_SetFuncAlphaBlending(DMA2D_AlphaBlending);                                                /* Set up custom alpha blending function using DMA2D */
@@ -532,16 +532,16 @@ static void LCD_LL_Init(void)
    
       
 //	  /* Configure the DMA2D  default mode */ 
-//  hdma2d.Init.Mode         = DMA2D_R2M;
-//  hdma2d.Init.ColorMode    = DMA2D_RGB565;
-//  hdma2d.Init.OutputOffset = 0x0;     
+  hdma2d.Init.Mode         = DMA2D_R2M;
+  hdma2d.Init.ColorMode    = DMA2D_RGB565;
+  hdma2d.Init.OutputOffset = 0x0;     
 
-//  hdma2d.Instance          = DMA2D; 
+  hdma2d.Instance          = DMA2D; 
 
-//  if(HAL_DMA2D_Init(&hdma2d) != HAL_OK)
-//  {
-//    while (1);
-//  }
+  if(HAL_DMA2D_Init(&hdma2d) != HAL_OK)
+  {
+    while (1);
+  }
 }   
 
 /**
